@@ -1,0 +1,104 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+    $( document ).ready(function(){
+        //Format table
+        $("td").width("100px");
+        $("td").height("100px");
+        $("td").css({
+          border: "2px solid black",
+          textAlign: "center",
+          fontSize: "36px"
+        });
+
+        //Initialize Player 1
+        var playerMove = "X";
+
+        //switch Player after move
+        function switchPlayer(){
+          if (playerMove == "X")
+            return "O";
+          else 
+            return "X";
+        };
+
+        //Lock square so duplicates moves aren't made
+        function lockSquare(square){
+          $("#"+square).addClass("locked");
+        };
+
+        //Game Logic
+        function makeMove(square, move){
+            switch (square)
+            {
+              case "top_left":
+                $("#"+square).html(move)
+                break; 
+              case "top_center":
+                $("#"+square).html(move)
+                break; 
+              case "top_right":
+                $("#"+square).html(move)
+                break; 
+              case "middle_left":
+                $("#"+square).html(move)
+                break; 
+              case "middle_center":
+                $("#"+square).html(move)
+                break; 
+              case "middle_right":
+                $("#"+square).html(move)
+                break; 
+              case "bottom_left":
+                $("#"+square).html(move)
+                break; 
+              case "bottom_center":
+                $("#"+square).html(move)
+                break; 
+              case "bottom_right":
+                $("#"+square).html(move)
+                break;         
+            }
+        }
+
+        //Clicking on squares
+        $("td").click(function(event){
+          if (playerMove == ""){
+            alert("Please choose which player is moving")
+          }
+          else if ($("#"+this.id).hasClass("locked"))
+            alert("This square has already been played on!");
+          else
+          {
+          makeMove(this.id, playerMove)
+          lockSquare(this.id)
+          playerMove = switchPlayer()
+          }
+        })
+
+    });
+    </script>
+</head>
+<body>
+    <table>
+      <caption>Tic Tac Toe</caption>
+      <tr id = "top_row">
+        <td id = "top_left"></td>
+        <td id = "top_center"></td>
+        <td id = "top_right"></td>
+      </tr>
+      <tr id = "middle_row">
+        <td id = "middle_left"></td>
+        <td id = "middle_center"></td>
+        <td id = "middle_right"></td>
+      </tr>
+      <tr id = "bottom_row">
+        <td id = "bottom_left"></td>
+        <td id = "bottom_center"></td>
+        <td id = "bottom_right"></td>
+      </tr>
+    </table>
+
+</body>
+</html>

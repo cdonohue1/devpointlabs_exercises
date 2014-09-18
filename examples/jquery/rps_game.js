@@ -73,6 +73,7 @@ $(document).ready(function(){
         };
       };
       // return result;
-      alert("what hapened:" + result); 
+      alert("what hapened:" + result +", wins, "+wins+" loses, "+loses); 
      };
   });
+//$(#results_div_id).html("the winner is "+results)//if the results div id was an id it would insert the results into that div 
